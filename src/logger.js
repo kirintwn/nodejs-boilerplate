@@ -1,5 +1,7 @@
 import { createLogger, format, transports } from 'winston';
 
+const { NODE_ENV } = process.env;
+
 const logger = createLogger({
   level: 'info',
   format: format.combine(
@@ -11,14 +13,26 @@ const logger = createLogger({
     format.json(),
   ),
 });
-if (process.env.NODE_ENV !== 'production') {
+
+if (NODE_ENV === 'test') {
+  logger.add(
+    new transports.Console({
+      level: 'error',
+      format: format.combine(format.colorize(), format.simple()),
+    }),
+  );
+} else if (NODE_ENV === 'production' || NODE_ENV === 'staging') {
+  logger.add(
+    new transports.Console({
+      format: format.simple(),
+    }),
+  );
+} else {
   logger.add(
     new transports.Console({
       format: format.combine(format.colorize(), format.simple()),
     }),
   );
-} else {
-  logger.add(new transports.File({ filename: 'log/app.log' }));
 }
 
 const koaErrorCatcher = async (ctx, next) => {

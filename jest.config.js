@@ -1,6 +1,6 @@
 module.exports = {
   verbose: true,
-  collectCoverage: true,
+  collectCoverage: false,
   collectCoverageFrom: ['src/**/*.js'],
   coverageReporters: ['text'],
   testMatch: ['**/test/**/*.js'],

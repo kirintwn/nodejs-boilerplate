@@ -6,13 +6,13 @@ The Boilerplate is a professional backend template for building fast, robust, an
 
 1. Clone the git repo
 2. Install dependencies with: `npm install`
-3. Build the code with: `npm run build`
-4. Start the server with: `npm start`
+3. Build & start the server with: `npm start`
 
 ### Advanced scripts
 
+* `npm run build`: build the code without execution
 * `npm run lint`: linting with auto-fixing
-* `npm run test`: linting & testing
+* `npm run test`: testing
 
 ## Features
 

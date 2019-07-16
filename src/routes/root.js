@@ -8,8 +8,4 @@ router.get('/test', async (ctx) => {
   ctx.status = 200;
 });
 
-router.get('/*', async (ctx) => {
-  await send(ctx, './dist/index.html');
-});
-
 export default router;

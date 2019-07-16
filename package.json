@@ -4,8 +4,7 @@
   "description": "",
   "scripts": {
     "lint": "NODE_ENV=test eslint . --fix",
-    "test": "npm run lint && NODE_ENV=test jest",
-    "test-update": "npm run lint && NODE_ENV=test jest -u",
+    "test": "NODE_ENV=test jest",
     "build": "rm -rf build && babel src -d build --copy-files",
     "start": "npm run build && node build"
   },
