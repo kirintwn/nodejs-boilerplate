@@ -57,8 +57,6 @@
     "koa-body": "^4.1.0",
     "koa-logger": "^3.2.0",
     "koa-router": "^7.4.0",
-    "koa-send": "^5.0.0",
-    "koa-static": "^5.0.0",
     "mongoose": "^5.5.14",
     "nconf": "^0.10.0",
     "source-map-support": "^0.5.12",
