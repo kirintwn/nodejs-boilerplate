@@ -28,7 +28,7 @@ afterEach(async () => {
 });
 
 describe('test koa server', () => {
-  test('should respond as expected', async () => {
+  it('should respond as expected', async () => {
     const response = await request.get('/test');
     expect(response.status).toEqual(200);
     expect(response.body.data).toMatchSnapshot();

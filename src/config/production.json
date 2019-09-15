@@ -1,9 +1,3 @@
 {
-  "MONGODB_URI": "",
-  "HOSTS": [
-    {
-      "name": "example.hostname",
-      "addr": "example.ip"
-    }
-  ]
+  "MONGODB_URI": ""
 }

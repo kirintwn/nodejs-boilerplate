@@ -1,6 +1,5 @@
 import path from 'path';
 import nconf from 'nconf';
-import evilDns from 'evil-dns';
 import { logger } from '../logger';
 
 class Config {
@@ -23,21 +22,10 @@ class Config {
     logger.info('USING THE FOLLOWING CONFIG:');
     logger.info(JSON.stringify(nconf.get(), null, 2));
     logger.info('-------------------------------------------------');
-
-    this.setCustomDNS();
   }
 
   get(key) {
     return nconf.get(key);
-  }
-
-  setCustomDNS() {
-    const hosts = this.get('HOSTS');
-    if (hosts) {
-      for (let i = 0; i < hosts.length; i += 1) {
-        evilDns.add(hosts[i].name, hosts[i].addr);
-      }
-    }
   }
 }
 

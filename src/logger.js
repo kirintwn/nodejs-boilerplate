@@ -14,25 +14,28 @@ const logger = createLogger({
   ),
 });
 
-if (NODE_ENV === 'test') {
-  logger.add(
-    new transports.Console({
-      level: 'error',
-      format: format.combine(format.colorize(), format.simple()),
-    }),
-  );
-} else if (NODE_ENV === 'production' || NODE_ENV === 'staging') {
-  logger.add(
-    new transports.Console({
-      format: format.simple(),
-    }),
-  );
-} else {
-  logger.add(
-    new transports.Console({
-      format: format.combine(format.colorize(), format.simple()),
-    }),
-  );
+switch (NODE_ENV) {
+  case 'test':
+    logger.add(
+      new transports.Console({
+        level: 'error',
+        format: format.combine(format.colorize(), format.simple()),
+      }),
+    );
+    break;
+  case 'production':
+    logger.add(
+      new transports.Console({
+        format: format.simple(),
+      }),
+    );
+    break;
+  default:
+    logger.add(
+      new transports.Console({
+        format: format.combine(format.colorize(), format.simple()),
+      }),
+    );
 }
 
 const koaErrorCatcher = async (ctx, next) => {
