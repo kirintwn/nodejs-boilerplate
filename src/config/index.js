@@ -2,31 +2,23 @@ import path from 'path';
 import nconf from 'nconf';
 import { logger } from '../logger';
 
-class Config {
-  constructor() {
-    nconf.argv({ parseValues: true });
-    nconf.env({ parseValues: true, whitelist: ['NODE_ENV', 'STAGING'] });
-    this.env = nconf.get('NODE_ENV');
-    if (this.env === 'production' && !!this.get('STAGING')) {
-      this.env = 'staging';
-    }
+nconf.argv({ parseValues: true });
+nconf.env({ parseValues: true, whitelist: ['NODE_ENV', 'STAGING'] });
 
-    if (this.env) {
-      nconf.file(
-        this.env,
-        path.join(__dirname, `${this.env.toLowerCase()}.json`),
-      );
-    }
-    nconf.file('default', path.join(__dirname, 'default.json'));
-
-    logger.info('USING THE FOLLOWING CONFIG:');
-    logger.info(JSON.stringify(nconf.get(), null, 2));
-    logger.info('-------------------------------------------------');
-  }
-
-  get(key) {
-    return nconf.get(key);
-  }
+let env = nconf.get('NODE_ENV');
+if (env === 'production' && !!this.get('STAGING')) {
+  env = 'staging';
 }
 
-export default new Config();
+if (env) {
+  nconf.file(env, path.join(__dirname, `${env.toLowerCase()}.json`));
+}
+nconf.file('default', path.join(__dirname, 'default.json'));
+
+logger.info('USING THE FOLLOWING CONFIG:');
+logger.info(JSON.stringify(nconf.get(), null, 2));
+logger.info('-------------------------------------------------');
+
+export default {
+  get: (key) => nconf.get(key),
+};

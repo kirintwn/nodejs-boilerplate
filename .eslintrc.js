@@ -1,18 +1,23 @@
 module.exports = {
   parser: 'babel-eslint',
+  parserOptions: {
+    ecmaVersion: 2020,
+    sourceType: 'module',
+  },
   env: {
     node: true,
     'jest/globals': true,
   },
-  extends: ['airbnb', 'plugin:jest/recommended', 'plugin:prettier/recommended'],
-  parserOptions: {
-    ecmaVersion: 2018,
-    sourceType: 'module',
+  settings: {
+    react: {
+      version: 'latest',
+    },
   },
+  extends: ['airbnb', 'plugin:jest/recommended', 'plugin:prettier/recommended'],
   plugins: ['jest', 'prettier'],
   rules: {
     'import/prefer-default-export': 'off',
-    'class-methods-use-this': 'off',
+    'class-methods-use-this': 'warn',
     'consistent-return': 'warn',
     'no-unused-vars': 'warn',
     'no-continue': 'off',

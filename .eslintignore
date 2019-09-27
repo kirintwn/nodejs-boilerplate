@@ -1,5 +1,4 @@
 !.eslintrc.js
 !**/*.babelrc.js
 build/**
-assets/**
 node_modules/**
