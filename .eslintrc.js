@@ -8,12 +8,11 @@ module.exports = {
     node: true,
     'jest/globals': true,
   },
-  settings: {
-    react: {
-      version: 'latest',
-    },
-  },
-  extends: ['airbnb', 'plugin:jest/recommended', 'plugin:prettier/recommended'],
+  extends: [
+    'airbnb-base',
+    'plugin:jest/recommended',
+    'plugin:prettier/recommended',
+  ],
   plugins: ['jest', 'prettier'],
   rules: {
     'import/prefer-default-export': 'off',
