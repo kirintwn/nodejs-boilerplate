@@ -53,7 +53,7 @@
     "koa-body": "^4.1.1",
     "koa-logger": "^3.2.1",
     "koa-router": "^7.4.0",
-    "mongoose": "^5.7.1",
+    "mongoose": "^5.7.3",
     "nconf": "^0.10.0",
     "source-map-support": "^0.5.13",
     "winston": "^3.2.1"
