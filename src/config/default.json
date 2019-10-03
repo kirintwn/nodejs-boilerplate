@@ -1,10 +1,3 @@
 {
-  "MONGODB_URI": "",
-  "MONGOOSE_OPTS": {
-    "useNewUrlParser": true,
-    "useCreateIndex": true,
-    "useFindAndModify": false,
-    "keepAlive": true,
-    "connectTimeoutMS": 10000
-  }
+  "PORT": 3000
 }

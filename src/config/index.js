@@ -3,7 +3,7 @@ import nconf from 'nconf';
 import { logger } from '../logger';
 
 nconf.argv({ parseValues: true });
-nconf.env({ parseValues: true, whitelist: ['NODE_ENV', 'STAGING'] });
+nconf.env({ parseValues: true, whitelist: ['NODE_ENV', 'STAGING', 'PORT'] });
 
 let env = nconf.get('NODE_ENV');
 if (env === 'production' && !!this.get('STAGING')) {
