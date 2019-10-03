@@ -3,7 +3,7 @@ import Koa from 'koa';
 import koaLogger from 'koa-logger';
 import bodyParser from 'koa-body';
 import config from './config';
-import router from './routes/root';
+import router from './routes';
 import { logger, koaErrorCatcher, koaErrorLogger } from './logger';
 
 const PORT = config.get('PORT') ?? 3000;
