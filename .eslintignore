@@ -1,3 +1,4 @@
 !.eslintrc.js
+!.huskyrc.js
 !**/*.babelrc.js
 /build/**

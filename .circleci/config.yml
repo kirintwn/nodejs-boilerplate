@@ -12,7 +12,7 @@ jobs:
           name: Update npm to latest version
           command: "sudo npm install -g npm@latest"
       - restore_cache:
-          name: Restore node_modules from cache
+          name: Restore dependencies from cache
           key: dependency-cache-{{ checksum "package-lock.json" }}
       - run:
           name: Install dependencies if needed
@@ -21,7 +21,7 @@ jobs:
               npm ci
             fi
       - save_cache:
-          name: Cache node_modules
+          name: Cache dependencies
           key: dependency-cache-{{ checksum "package-lock.json" }}
           paths:
             - ./node_modules

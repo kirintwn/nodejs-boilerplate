@@ -9,17 +9,6 @@
     "build": "rm -rf build && babel src -d build --copy-files",
     "start": "npm run build && node build"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.js": [
-      "eslint --fix",
-      "git add"
-    ]
-  },
   "author": "Kirintw",
   "license": "MIT",
   "devDependencies": {
