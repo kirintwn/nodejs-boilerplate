@@ -6,12 +6,12 @@ nconf.argv({ parseValues: true });
 nconf.env({ parseValues: true, whitelist: ['NODE_ENV', 'STAGING', 'PORT'] });
 
 let env = nconf.get('NODE_ENV');
-if (env === 'production' && !!this.get('STAGING')) {
+if (env === 'production' && !!nconf.get('STAGING')) {
   env = 'staging';
 }
 
-if (env) {
-  nconf.file(env, path.join(__dirname, `${env.toLowerCase()}.json`));
+if (['test', 'staging', 'production'].includes(env)) {
+  nconf.file(env, path.join(__dirname, `${env}.json`));
 }
 nconf.file('default', path.join(__dirname, 'default.json'));
 
