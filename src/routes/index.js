@@ -2,7 +2,7 @@ import Router from 'koa-router';
 
 const router = new Router();
 
-router.get('/health', async (ctx) => {
+router.get('/healthcheck', async (ctx) => {
   ctx.body = 'OK';
   ctx.status = 200;
 });

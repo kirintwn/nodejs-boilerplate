@@ -1,5 +1,3 @@
-import 'core-js/stable';
-import 'regenerator-runtime/runtime';
 import supertest from 'supertest';
 import server from '../src';
 import config from '../src/config';
@@ -15,11 +13,11 @@ beforeAll(async () => {
 afterAll(async () => {
   await listener.close();
 });
-beforeEach(() => {});
-afterEach(() => {});
+// beforeEach(() => {});
+// afterEach(() => {});
 
 test('Koa Server Health Check', async () => {
-  const res = await request.get('/health');
+  const res = await request.get('/healthcheck');
   expect(res.status).toEqual(200);
   expect(res.text).toBe('OK');
 });
