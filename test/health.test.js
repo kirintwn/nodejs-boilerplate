@@ -6,15 +6,13 @@ const PORT = config.get('PORT') ?? 3000;
 let listener;
 let request;
 
-beforeAll(async () => {
+beforeAll(() => {
   listener = server.listen(PORT);
   request = supertest(listener);
 });
 afterAll(async () => {
   await listener.close();
 });
-// beforeEach(() => {});
-// afterEach(() => {});
 
 test('Koa Server Health Check', async () => {
   const res = await request.get('/healthcheck');
