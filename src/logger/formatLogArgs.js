@@ -4,6 +4,9 @@ import chalk from 'chalk';
 const ERROR_STACK_LIMIT = 3;
 const SRC_ROOT = path.join(__dirname, '../../src');
 
+// Reference:
+// https://v8.dev/docs/stack-trace-api
+// https://gist.github.com/transitive-bullshit/39a7edc77c422cbf8a18
 const getStackInfo = (stackIndex) => {
   const stacklist = new Error().stack.split('\n').slice(3);
   const stackReg = /at\s+(.*)\s+\((.*):(\d*):(\d*)\)/gi;
