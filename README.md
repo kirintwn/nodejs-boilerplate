@@ -11,9 +11,9 @@ The Boilerplate is a professional backend template for building fast, robust, an
 ### Advanced scripts
 
 * `npm run build`: build the code without execution
-* `npm run lint`: linting with auto-fixing
-* `npm run test`: testing
-* `npm run dev`: dev with hot reloading (provided by `nodemon`)
+* `npm run lint`: lint with auto-fixing
+* `npm run test`: test
+* `npm run dev`: dev with hot reloading (provided by [`nodemon`](https://github.com/remy/nodemon) & [`babel-node`](https://github.com/babel/babel/tree/master/packages/babel-node))
 
 ## Features
 
@@ -23,6 +23,6 @@ The Boilerplate is a professional backend template for building fast, robust, an
   * [`Jest`](https://github.com/facebook/jest)
 * Hierarchical config with [`nconf`](https://github.com/indexzero/nconf)
 * Logging elegantly with [`winston`](https://github.com/winstonjs/winston)
-* [`Babel`](https://babeljs.io/) for transpile the source code
+* [`Babel`](https://babeljs.io/) to transpile the source code
 * Lint the code with airbnb based [`ESLint`](https://github.com/eslint/eslint) config & [`Prettier`](https://github.com/prettier/prettier)
-* Code quality protection by linting with git pre-commit hook
+* Code quality protection by linting with git hook
