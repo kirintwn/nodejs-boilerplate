@@ -58,6 +58,8 @@ const formatLogArgs = (args, levelLength) => {
       )}`;
     } else if (typeof modArgs[0] === 'string') {
       modArgs[0] = `${calleeStr} ${prependSpace(modArgs[0], spaceCount)}`;
+    } else {
+      modArgs[0] = `${calleeStr} ${modArgs[0]}`;
     }
   }
 

@@ -1,5 +1,5 @@
 import { createLogger, format, transports } from 'winston';
-import formatLogArgs from './formatLogArgs';
+import formatLogArgs from './format-log-args';
 
 const { NODE_ENV } = process.env;
 
