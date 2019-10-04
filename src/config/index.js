@@ -15,7 +15,7 @@ if (['test', 'staging', 'production'].includes(env)) {
 }
 nconf.file('default', path.join(__dirname, 'default.json'));
 
-logger.debug('USING THE FOLLOWING CONFIG:');
+logger.debug('config:');
 logger.debug(nconf.get());
 
 export default {

@@ -21,7 +21,7 @@ server.use(bodyParser({ multipart: true }));
 if (!IS_TEST) {
   server.use(koaLogger());
   server.listen(PORT, () => {
-    logger.info(`Server Listens on port: ${PORT}`);
+    logger.info(`Server listens on port ${PORT}`);
   });
 }
 
