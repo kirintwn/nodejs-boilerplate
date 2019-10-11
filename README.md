@@ -10,9 +10,9 @@ The Boilerplate is a professional backend template for building fast, robust, an
 
 ### Advanced scripts
 
-* `npm run build`: build the code without execution
+* `npm test`: run tests
 * `npm run lint`: lint with auto-fixing
-* `npm run test`: test
+* `npm run build`: build without execution
 * `npm run dev`: dev with hot reloading (provided by [`nodemon`](https://github.com/remy/nodemon) & [`babel-node`](https://github.com/babel/babel/tree/master/packages/babel-node))
 
 ## Features
