@@ -27,10 +27,14 @@ jobs:
             - ./node_modules
       - run:
           name: Lint
-          command: npm run lint
+          command: npm run lint -- --format junit -o reports/eslint.xml
       - run:
           name: Test
-          command: npm test
+          environment:
+            JEST_JUNIT_OUTPUT_NAME: "reports/jest.xml"
+          command: npm test -- --ci --maxWorkers=2 --reporters="default" --reporters="jest-junit"
+      - store_test_results:
+          path: reports
       - run:
           name: Build
           command: npm run build
