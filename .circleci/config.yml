@@ -27,7 +27,7 @@ jobs:
             - ./node_modules
       - run:
           name: Lint
-          command: npm run lint -- --format junit -o reports/eslint.xml
+          command: npx eslint . --quiet
       - run:
           name: Test
           environment:

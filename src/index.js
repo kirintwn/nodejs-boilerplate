@@ -27,5 +27,6 @@ if (!IS_TEST) {
 
 server.use(router.routes());
 server.use(router.allowedMethods());
+f;
 
 export default server;
