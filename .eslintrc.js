@@ -15,7 +15,6 @@ module.exports = {
   ],
   plugins: ['jest', 'prettier'],
   rules: {
-    'import/prefer-default-export': 'off',
     'class-methods-use-this': 'warn',
     'consistent-return': 'warn',
     'no-unused-vars': 'warn',
