@@ -23,8 +23,16 @@ logger.add(
 );
 
 export default {
-  debug: (...args) => logger.debug(...formatLogArgs(args, 'debug'.length)),
-  info: (...args) => logger.info(...formatLogArgs(args, 'info'.length)),
-  warn: (...args) => logger.warn(...formatLogArgs(args, 'warn'.length)),
-  error: (...args) => logger.error(...formatLogArgs(args, 'error'.length)),
+  debug: (message) => {
+    logger.debug(formatLogArgs(message, 'debug'.length));
+  },
+  info: (message) => {
+    logger.info(formatLogArgs(message, 'info'.length));
+  },
+  warn: (message) => {
+    logger.warn(formatLogArgs(message, 'warn'.length));
+  },
+  error: (message) => {
+    logger.error(formatLogArgs(message, 'error'.length));
+  },
 };

@@ -8,7 +8,11 @@ const SRC_ROOT = path.join(__dirname, '../../src');
 // https://v8.dev/docs/stack-trace-api
 // https://gist.github.com/transitive-bullshit/39a7edc77c422cbf8a18
 const getStackInfo = (stackIndex) => {
-  const stacklist = new Error().stack.split('\n').slice(3);
+  const error = new Error();
+  const stacklist = error.stack && error.stack.split('\n').slice(3);
+
+  if (!stacklist) return null;
+
   const stackReg = /at\s+(.*)\s+\((.*):(\d*):(\d*)\)/gi;
   const stackReg2 = /at\s+()(.*):(\d*):(\d*)/gi;
 
@@ -35,35 +39,35 @@ const prependSpace = (str, count) =>
     .map((line, index) => (index !== 0 ? `${' '.repeat(count)}${line}` : line))
     .join('\n');
 
-const formatLogArgs = (args, levelLength) => {
-  const modArgs = Array.prototype.slice.call(args);
+const formatLogArgs = (message, levelLength) => {
+  let res = message;
   const stackInfo = getStackInfo(1);
 
-  if (stackInfo != null && modArgs[0] != null) {
+  if (stackInfo != null && res != null) {
     let calleeStr = `${stackInfo.relativePath}:${stackInfo.line}`;
     const spaceCount = calleeStr.length + levelLength + 2;
     calleeStr = chalk.gray(calleeStr);
 
-    if (modArgs[0] instanceof Error) {
-      modArgs[0] = `${calleeStr} ${chalk.red(
+    if (res instanceof Error) {
+      res = `${calleeStr} ${chalk.red(
         prependSpace(
-          getLines(modArgs[0].stack, ERROR_STACK_LIMIT + 1),
+          getLines(res.stack, ERROR_STACK_LIMIT + 1),
           spaceCount - 2,
         ),
       )}`;
-    } else if (typeof modArgs[0] === 'object') {
-      modArgs[0] = `${calleeStr} ${prependSpace(
-        JSON.stringify(modArgs[0], null, 2),
+    } else if (typeof res === 'object') {
+      res = `${calleeStr} ${prependSpace(
+        JSON.stringify(res, null, 2),
         spaceCount,
       )}`;
-    } else if (typeof modArgs[0] === 'string') {
-      modArgs[0] = `${calleeStr} ${prependSpace(modArgs[0], spaceCount)}`;
+    } else if (typeof res === 'string') {
+      res = `${calleeStr} ${prependSpace(res, spaceCount)}`;
     } else {
-      modArgs[0] = `${calleeStr} ${modArgs[0]}`;
+      res = `${calleeStr} ${res}`;
     }
   }
 
-  return modArgs;
+  return res;
 };
 
 export default formatLogArgs;
