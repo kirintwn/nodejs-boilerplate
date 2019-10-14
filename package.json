@@ -5,7 +5,7 @@
   "scripts": {
     "lint": "eslint . --fix",
     "test": "NODE_ENV=test jest",
-    "dev": "nodemon -w src -x babel-node src",
+    "dev": "nodemon",
     "build": "rm -rf build && babel src -d build --copy-files",
     "start": "npm run build && node build"
   },
