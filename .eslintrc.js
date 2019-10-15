@@ -28,14 +28,5 @@ module.exports = {
       'LabeledStatement',
       'WithStatement',
     ],
-    'prettier/prettier': [
-      'error',
-      {
-        semi: true,
-        trailingComma: 'all',
-        singleQuote: true,
-        arrowParens: 'always',
-      },
-    ],
   },
 };
