@@ -19,25 +19,38 @@ const getStackInfo = (stackIndex) => {
   const s = stacklist[stackIndex] || stacklist[0];
   const sp = stackReg.exec(s) || stackReg2.exec(s);
 
-  if (sp && sp.length === 5) {
-    return {
-      method: sp[1],
-      relativePath: path.relative(SRC_ROOT, sp[2]),
-      line: sp[3],
-      pos: sp[4],
-      file: path.basename(sp[2]),
-      stack: stacklist.join('\n'),
-    };
-  }
-  return null;
+  if (!sp || sp.length < 5) return null;
+
+  return {
+    method: sp[1],
+    relativePath: path.relative(SRC_ROOT, sp[2]),
+    line: sp[3],
+    pos: sp[4],
+    file: path.basename(sp[2]),
+    stack: stacklist.join('\n'),
+  };
 };
 
 const getLines = (str, count) => str.split('\n', count).join('\n');
+
 const prependSpace = (str, count) =>
   str
     .split('\n')
     .map((line, index) => (index !== 0 ? `${' '.repeat(count)}${line}` : line))
     .join('\n');
+
+const getCircularReplacer = () => {
+  const seen = new WeakSet();
+  return (_key, value) => {
+    if (typeof value === 'object' && value !== null) {
+      if (seen.has(value)) {
+        return '...';
+      }
+      seen.add(value);
+    }
+    return value;
+  };
+};
 
 const formatLogArgs = (message, levelLength) => {
   let res = message;
@@ -57,7 +70,7 @@ const formatLogArgs = (message, levelLength) => {
       )}`;
     } else if (typeof res === 'object') {
       res = `${calleeStr} ${prependSpace(
-        JSON.stringify(res, null, 2),
+        JSON.stringify(res, getCircularReplacer(), 2),
         spaceCount,
       )}`;
     } else if (typeof res === 'string') {
