@@ -13,7 +13,6 @@ module.exports = {
     'plugin:jest/recommended',
     'plugin:prettier/recommended',
   ],
-  plugins: ['jest', 'prettier'],
   rules: {
     'class-methods-use-this': 'warn',
     'consistent-return': 'warn',
