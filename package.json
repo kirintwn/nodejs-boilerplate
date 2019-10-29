@@ -43,7 +43,7 @@
     "koa-logger": "^3.2.1",
     "koa-router": "^7.4.0",
     "nconf": "^0.10.0",
-    "source-map-support": "^0.5.13",
+    "source-map-support": "^0.5.16",
     "winston": "^3.2.1"
   }
 }
