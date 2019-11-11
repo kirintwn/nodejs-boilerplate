@@ -17,7 +17,7 @@ const logFormat = format.printf(({ level, message }) => `${level} ${message}`);
 const logger = createLogger();
 logger.add(
   new transports.Console({
-    level: getLoggerLevel(NODE_ENV || 'development'),
+    level: getLoggerLevel(NODE_ENV),
     format: format.combine(format.colorize(), format.prettyPrint(), logFormat),
   }),
 );
@@ -27,12 +27,12 @@ export default {
     logger.debug(formatLogArgs(message, 'debug'.length));
   },
   info: (message) => {
-    logger.info(formatLogArgs(message, 'info'.length));
+    logger.info(message);
   },
   warn: (message) => {
-    logger.warn(formatLogArgs(message, 'warn'.length));
+    logger.warn(message);
   },
   error: (message) => {
-    logger.error(formatLogArgs(message, 'error'.length));
+    logger.error(message);
   },
 };
