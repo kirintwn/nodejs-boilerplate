@@ -1,31 +1,15 @@
 import 'source-map-support/register';
-import Koa from 'koa';
-import koaLogger from 'koa-logger';
-import bodyParser from 'koa-body';
-import config from './config';
-import logger from './logger';
-import router from './routes';
-import { errorCacher, errorLogger } from './middlewares';
+import server from './server';
+import Logger from './utils/logger';
 
-const PORT = config.get('PORT') ?? 3000;
-const IS_TEST = !!module.parent;
+(async () => {
+  Logger.initializeLogger('verbose');
+  const PORT = 4000;
 
-const server = new Koa();
-
-server.proxy = true;
-server.use(errorCacher);
-server.on('error', errorLogger);
-
-server.use(bodyParser({ multipart: true }));
-
-if (!IS_TEST) {
-  server.use(koaLogger());
   server.listen(PORT, () => {
-    logger.info(`Server listening on port ${PORT}`);
+    Logger.getLogger('system').info(`Server listening on port ${PORT}`);
   });
-}
-
-server.use(router.routes());
-server.use(router.allowedMethods());
-
-export default server;
+})().catch((error) => {
+  Logger.getLogger('system').error('Fatal error:', error);
+  process.exit(1);
+});

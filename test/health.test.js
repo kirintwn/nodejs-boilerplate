@@ -1,8 +1,7 @@
 import supertest from 'supertest';
-import server from '../src';
-import config from '../src/config';
+import server from '../src/server';
 
-const PORT = config.get('PORT') ?? 3000;
+const PORT = 4001;
 let listener;
 let request;
 
